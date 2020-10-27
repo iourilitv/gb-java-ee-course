@@ -1,0 +1,9 @@
+13:55:15,433 INFO  [org.jboss.as.repository] (management-handler-thread - 1) WFLYDR0001: Content added at location D:\GeekBrains\_software\_JAVA\WildFly-JakartaEE\wildfly-21.0.0.Final\standalone\data\content\5e\4efe4a6ba9095548f339855b524fb01342e7e3\content
+13:55:15,559 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "lesson1-app.war" (runtime-name: "lesson1-app.war")
+13:55:21,004 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 78) ISPN000128: Infinispan version: Infinispan 'Corona Extra' 11.0.4.Final
+13:55:21,209 INFO  [org.infinispan.CONFIG] (MSC service thread 1-8) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+13:55:21,212 INFO  [org.infinispan.CONFIG] (MSC service thread 1-8) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+13:55:21,426 INFO  [org.infinispan.PERSISTENCE] (ServerService Thread Pool -- 78) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+13:55:21,865 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 78) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+13:55:22,549 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 81) WFLYUT0021: Registered web context: '/lesson1-app' for server 'default-server'
+13:55:22,849 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "lesson1-app.war" (runtime-name : "lesson1-app.war")
