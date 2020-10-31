@@ -1,4 +1,6 @@
 /target
+/lesson1-app/target
+/lesson2-app/target
 /out
-.idea
+/.idea
 *iml

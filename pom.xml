@@ -12,6 +12,7 @@
     <modules>
 
         <module>lesson1-app</module>
+        <module>lesson2-app</module>
     </modules>
 
 </project>
