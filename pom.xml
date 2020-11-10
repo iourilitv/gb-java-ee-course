@@ -13,6 +13,7 @@
 
         <module>lesson1-app</module>
         <module>lesson2-app</module>
+        <module>lesson3-app</module>
     </modules>
 
 </project>
