@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setHeader("Title", Pages.Product.name());
+        req.setAttribute("Title", Pages.Product.name());
 
         getServletContext().getRequestDispatcher("/header").include(req, resp);
         getServletContext().getRequestDispatcher("/navigation").include(req, resp);

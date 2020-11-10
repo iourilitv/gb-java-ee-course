@@ -2,7 +2,6 @@ package gb.lesson2.servlets;
 
 import gb.lesson2.utils.Pages;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

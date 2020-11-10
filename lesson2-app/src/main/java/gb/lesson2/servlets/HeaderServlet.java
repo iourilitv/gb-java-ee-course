@@ -16,7 +16,7 @@ public class HeaderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String title = resp.getHeader("Title");
+        String title = (String) req.getAttribute("Title");
         log.info("Title: " + title);
 
         resp.getWriter().println("<head>");

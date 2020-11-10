@@ -13,8 +13,7 @@ import java.io.IOException;
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setHeader("Title", Pages.Home.name());
-//        resp.addHeader("Title", "Home");//works as well
+        req.setAttribute("Title", Pages.Home.name());
 
         getServletContext().getRequestDispatcher("/header").include(req, resp);
         getServletContext().getRequestDispatcher("/navigation").include(req, resp);
