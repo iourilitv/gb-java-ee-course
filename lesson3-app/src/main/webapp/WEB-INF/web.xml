@@ -5,17 +5,22 @@
          xsi:schemaLocation= "http://xmlns.jcp.org/xml/ns/javaee
 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version= "4.0">
-  <display-name>Lesson 2. Servlets App</display-name>
+  <display-name>Lesson 3. Servlets App</display-name>
   
-<!--  <servlet>-->
-<!--    <servlet-name>MyFirstServlet</servlet-name>-->
-<!--    <servlet-class>gb.lesson1.Less1Servlet</servlet-class>-->
-<!--  </servlet>-->
+  <context-param>
+    <param-name>jdbcConnectionString</param-name>
+    <param-value>jdbc:mysql://localhost:3306/gb-java-ee-course?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+  </context-param>
 
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>MyFirstServlet</servlet-name>-->
-<!--    <url-pattern>/servlet</url-pattern>-->
-<!--  </servlet-mapping>-->
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>mysql!1qwertY</param-value>
+  </context-param>
 
 </web-app>
 
