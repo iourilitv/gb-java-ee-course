@@ -2,7 +2,6 @@ package gb.lesson3.servlets;
 
 import gb.lesson3.repositories.ProductRepository;
 import gb.lesson3.utils.Attributes;
-import gb.lesson3.utils.Pages;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,29 +25,13 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("Title", Pages.Product.name());
-        getServletContext().getRequestDispatcher("/header").include(req, resp);
-        getServletContext().getRequestDispatcher("/navigation").include(req, resp);
-        resp.getWriter().println("<h1>" + Pages.Product.name() + "</h1>");
-
         try {
-//            if (req.getServletPath().equals("/{prodId}/prodId")) {
-//                Integer prodId = req.getHttpServletMapping().getMappingMatch().
-//
-//                Integer prodId = (Integer) req.getAttribute(Attributes.productId.name());
-//                req.setAttribute(Attributes.product.name(), productRepository.findById(prodId));
-//
-//                getServletContext().getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(req, resp);
-//            }
-//            else if (req.getServletPath().equals("/todo")) {
-//
-//            }
+            //TODO заглушка
+//            Integer prodId = (Integer) req.getAttribute(Attributes.productId.name());
+            Integer prodId = 1;
+            req.setAttribute(Attributes.product.name(), productRepository.findById(prodId));
+            getServletContext().getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(req, resp);
 
-            if (req.getServletPath().equals("/details")) {
-                Integer prodId = (Integer) req.getAttribute(Attributes.productId.name());
-                req.setAttribute(Attributes.product.name(), productRepository.findById(prodId));
-                getServletContext().getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(req, resp);
-            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en">
 
-    <c:set var="page" value="${Pages.About.name()}" />
+    <c:set var="page" value="${Pages.Home.name()}" />
 
     <jsp:include page="frags/header.jsp">
         <jsp:param name="Title" value="${page}"/>

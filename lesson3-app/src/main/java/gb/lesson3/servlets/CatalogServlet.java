@@ -2,7 +2,6 @@ package gb.lesson3.servlets;
 
 import gb.lesson3.repositories.ProductRepository;
 import gb.lesson3.utils.Attributes;
-import gb.lesson3.utils.Pages;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,11 +25,6 @@ public class CatalogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("Title", Pages.Catalog.name());
-        getServletContext().getRequestDispatcher("/header").include(req, resp);
-        getServletContext().getRequestDispatcher("/navigation").include(req, resp);
-        resp.getWriter().println("<h1>" + Pages.Catalog.name() + "</h1>");
-
         try {
             req.setAttribute(Attributes.products.name(), productRepository.findAll());
             getServletContext().getRequestDispatcher("/WEB-INF/views/catalog.jsp").forward(req, resp);

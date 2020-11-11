@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: iurii
-  Date: 10.11.2020
-  Time: 19:37
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
+<%@ page import="gb.lesson3.utils.Pages" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!doctype html>
+<html lang="en">
+
+<c:set var="page" value="${Pages.Order.name()}" />
+
+<jsp:include page="frags/header.jsp">
+    <jsp:param name="Title" value="${page}"/>
+</jsp:include>
+
 <body>
+<jsp:include page="frags/navigation.jsp">
+    <jsp:param name="Title" value="${page}"/>
+</jsp:include>
+
+<h2><c:out value="${page}"/></h2>
 
 </body>
 </html>
