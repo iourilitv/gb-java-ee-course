@@ -11,10 +11,6 @@
         </li>
 
         <li style= "display: inline-block">
-            <a href="${pageContext.request.contextPath}/${Pages.Product.name().toLowerCase()}"><%=Pages.Product.name()%></a>
-        </li>
-
-        <li style= "display: inline-block">
             <a href="${pageContext.request.contextPath}/${Pages.Cart.name().toLowerCase()}"><%=Pages.Cart.name()%></a>
         </li>
 
