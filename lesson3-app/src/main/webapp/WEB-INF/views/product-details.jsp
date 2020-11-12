@@ -1,5 +1,6 @@
 <%@ page import="gb.lesson3.utils.Pages" %>
 <%@ page import="gb.lesson3.utils.Attributes" %>
+<%@ page import="gb.lesson3.entities.Product" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
@@ -19,26 +20,30 @@
     <h2><c:out value="${page}"/></h2>
 
 <%--    //TODO Как привести значение к Product? --%>
-<%--    Почему-то product распознается как String --%>
-    <c:set var="product" value="${requestScope.get(Attributes.product.name())}"/>
+<%--    Почему-то product IDEA распознает как String. Но, тем не менее, работает --%>
+    <c:set var="prod" scope="page" value="${requestScope.get(Attributes.product.name())}" property=""/>
     <div>
         <label>Id</label>
-        <h3><c:out value="${product.id}"/></h3>
+<%--        <h3><c:out value="${requestScope.get(Attributes.product.name()).id}"/></h3>--%>
+        <h3><c:out value="${prod.id}"/></h3>
     </div>
 
     <div>
-        <label>Id</label>
-        <h3><c:out value="${product.title}"/></h3>
+        <label>Title</label>
+<%--        <h3><c:out value="${requestScope.get(Attributes.product.name()).title}"/></h3>--%>
+        <h3><c:out value="${prod.title}"/></h3>
     </div>
 
     <div>
-        <label>Id</label>
-        <h3><c:out value="${product.description}"/></h3>
+        <label>Description</label>
+<%--        <h3><c:out value="${requestScope.get(Attributes.product.name()).description}"/></h3>--%>
+        <h3><c:out value="${prod.description}"/></h3>
     </div>
 
     <div>
-        <label>Id</label>
-        <h3><c:out value="${product.price}"/></h3>
+        <label>Price</label>
+<%--        <h3><c:out value="${requestScope.get(Attributes.product.name()).price}"/></h3>--%>
+        <h3><c:out value="${prod.price}"/></h3>
     </div>
 
     <a class="btn btn-success" href="${pageContext.request.contextPath}/catalog"><i class="fas fa-window-close"></i></a>

@@ -1,3 +1,5 @@
+<%@ page import="gb.lesson3.entities.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page import="gb.lesson3.utils.Pages" %>
 <%@ page import="gb.lesson3.utils.Attributes" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
@@ -40,7 +42,9 @@
                     </thead>
 
                     <tbody>
-                    <c:forEach var="product" items="${requestScope.get(Attributes.products.name())}">
+<%--                     //TODO  IDEA распознает var только как String --%>
+<%--                    <c:forEach var="product" items="${requestScope.get(Attributes.products.name())}">--%>
+                        <c:forEach var="product" items="${requestScope.products}">
                         <tr>
                             <td>
                                 <c:out value="${product.id}"/>
@@ -55,11 +59,20 @@
                                 <c:out value="${product.price}"/>
                             </td>
                             <td>
-                                <c:url value="/product" var="productUrl">
+<%--                                 //TODO Похоже на костыль, но по другому не нашел как сделать разные url на кнопки --%>
+                                <c:url value="/product/edit" var="editUrl">
                                     <c:param name="productId" value="${product.id}"/>
                                 </c:url>
-                                <a class="btn btn-success" href="${productUrl + '/form'}"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-danger" href="${productUrl + '/delete'}"><i class="far fa-trash-alt"></i></a>
+                                <a class="btn btn-success" href="${editUrl}"><i class="fas fa-edit"></i></a>
+
+                                <c:url value="/product/delete" var="deleteUrl">
+                                    <c:param name="productId" value="${product.id}"/>
+                                </c:url>
+                                <a class="btn btn-danger" href="${deleteUrl}"><i class="far fa-trash-alt"></i></a>
+
+<%--                                <a class="btn btn-success" href="${productUrl + '/form'}"><i class="fas fa-edit"></i></a>--%>
+<%--                                <a class="btn btn-danger" href="${productUrl + '/delete'}"><i class="far fa-trash-alt"></i></a>--%>
+
                             </td>
                         </tr>
 

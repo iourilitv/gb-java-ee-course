@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(urlPatterns = "/product")
+@WebServlet(urlPatterns = {"/product/edit", "/product/delete"})
 public class ProductServlet extends HttpServlet {
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -31,14 +31,21 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            log.warn("**** prodId=" + req.getAttribute(Attributes.productId.name()));
+            String servletPath = req.getServletPath();
+            log.info("****** servletPath: " + servletPath);
 
-            Integer prodId = (Integer) req.getAttribute(Attributes.productId.name());
-            Product product = productRepository.findById(prodId)
-                    .orElseThrow(() -> new RuntimeException("Product with id=" + prodId + " was not found!"));
-            req.setAttribute(Attributes.product.name(), product);
-            getServletContext().getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(req, resp);
+            log.warn("**** prodId=" + req.getParameter(Attributes.productId.name()));
 
+            Integer prodId = Integer.valueOf(req.getParameter(Attributes.productId.name()));
+            if(servletPath.contains("edit")) {
+                Product product = productRepository.findById(prodId)
+                        .orElseThrow(() -> new RuntimeException("Product with id=" + prodId + " was not found!"));
+                req.setAttribute(Attributes.product.name(), product);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(req, resp);
+            } else if(servletPath.contains("delete")) {
+                productRepository.delete(prodId);
+                getServletContext().getRequestDispatcher("/catalog").forward(req, resp);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
