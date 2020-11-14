@@ -8,6 +8,9 @@ public class Product {
     private String description;
     private BigDecimal price;
 
+    public Product() {
+    }
+
     public Product(Integer id, String title, String description, BigDecimal price) {
         this.id = id;
         this.title = title;

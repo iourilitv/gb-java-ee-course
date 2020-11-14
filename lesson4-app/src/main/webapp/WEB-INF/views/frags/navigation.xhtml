@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form styleClass="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <h:commandLink styleClass="navbar-brand" value="Catalog" action="#{navigationController.catalogPage()}"/>
+            </li>
+
+            <li class="nav-item active">
+                <h:commandLink styleClass="navbar-brand" value="Cart" action="#{navigationController.cartPage()}"/>
+            </li>
+
+            <li class="nav-item active">
+                <h:commandLink styleClass="navbar-brand" value="Order" action="#{navigationController.orderPage()}"/>
+            </li>
+
+            <li class="nav-item active">
+                <h:commandLink styleClass="navbar-brand" value="About" action="#{navigationController.aboutPage()}"/>
+            </li>
+        </ul>
+    </div>
+</h:form>
+
+</html>

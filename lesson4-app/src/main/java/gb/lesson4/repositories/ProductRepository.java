@@ -2,16 +2,28 @@ package gb.lesson4.repositories;
 
 import gb.lesson4.entities.Product;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Named
+@ApplicationScoped
 public class ProductRepository {
-    private final Connection conn;
 
-    public ProductRepository(Connection conn) throws SQLException {
-        this.conn = conn;
+    @Inject
+    private ServletContext context;
+
+    private Connection conn;
+
+    @PostConstruct
+    public void init() throws SQLException {
+        conn = (Connection) context.getAttribute("jdbcConnection");
         createTableIfNotExists(conn);
     }
 
