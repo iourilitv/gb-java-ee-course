@@ -1,23 +1,22 @@
 package gb.lesson4.entities;
 
-import java.math.BigDecimal;
-
-public class Product {
+public class Category {
     private Integer id;
-    private Integer categoryId;
     private String title;
     private String description;
-    private BigDecimal price;
 
-    public Product() {
+    public Category() {
     }
 
-    public Product(Integer id, Integer categoryId, String title, String description, BigDecimal price) {
-        this.id = id;
-        this.categoryId = categoryId;
+    public Category(String title, String description) {
         this.title = title;
         this.description = description;
-        this.price = price;
+    }
+
+    public Category(Integer id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -26,14 +25,6 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getTitle() {
@@ -52,23 +43,12 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
-        return "Product{" +
+        return "Category{" +
                 "id=" + id +
-                ", categoryId=" + categoryId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
                 '}';
     }
-
 }

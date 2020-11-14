@@ -18,6 +18,13 @@
                 <h:form>
                     <input type="hidden" id="id" name="id"/>
                     <div class="form-group">
+                        <h:outputLabel value="Category id"/>
+                        <h:inputText styleClass="form-control" id="categoryId"
+                                     value="#{productController.product.categoryId}"
+                                     placeholder="Enter categoryId"/>
+                    </div>
+
+                    <div class="form-group">
                         <h:outputLabel value="Title"/>
                         <h:inputText styleClass="form-control" id="title"
                                      value="#{productController.product.title}"
