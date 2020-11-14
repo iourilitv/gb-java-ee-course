@@ -1,7 +1,12 @@
 package gb.lesson4.entities;
 
+import javax.inject.Named;
 import java.math.BigDecimal;
 
+/**
+ * Пример валидации управляемого бина.
+ */
+@Named
 public class Product {
     private Integer id;
     private Integer categoryId;

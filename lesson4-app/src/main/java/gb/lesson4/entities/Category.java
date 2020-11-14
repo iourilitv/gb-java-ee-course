@@ -1,8 +1,24 @@
 package gb.lesson4.entities;
 
+import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+/**
+ * Пример валидации CDI бина.
+ */
+@Named
+//@RequestScoped
+// TODO В index.xhtml при этой аннотации в списке товаров(на пустом) все елементы
+//  выводятся с пустыми полями!
 public class Category {
     private Integer id;
+
+    @NotNull(message = "Поле не должно быть пустым")
+    @Size (min = 4, max = 50,message = "Поле должно содержать от 4 до 50 символов")
     private String title;
+
+    @NotNull(message = "Поле не должно быть пустым")
     private String description;
 
     public Category() {

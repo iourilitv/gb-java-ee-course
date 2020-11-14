@@ -4,55 +4,49 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:include src="/WEB-INF/views/frags/head.xhtml">
-        <ui:param name="Title" value="Index"/>
+        <ui:param name="Title" value="Categories"/>
     </ui:include>
 
 <h:body>
     <ui:include src="/WEB-INF/views/frags/navigation.xhtml">
-        <ui:param name="Title" value="Catalog"/>
+        <ui:param name="Title" value="Categories list"/>
     </ui:include>
 
     <div class="container">
         <div class="row py-2">
-            <h:form id="productForm">
+            <h:form id="categoryForm">
                 <div class="col-12">
-                    <h:commandButton value="Add Product" styleClass="btn btn-primary"
-                                     action="#{productController.createProduct()}"/>
+                    <h:commandButton value="Add Category" styleClass="btn btn-primary"
+                                     action="#{categoryController.create}"/>
                 </div>
 
                 <div class="col-12">
-                    <!--@elvariable id="product" type="gb.lesson4.entities.Product"-->
-                    <h:dataTable value="#{productController.allProducts}" var="product"
+                    <h:dataTable value="#{categoryController.all}" var="category"
                                  styleClass="table table-bordered my-2">
                         <h:column>
                             <f:facet name="header">Id</f:facet>
-                            #{product.id}
+                            #{category.id}
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">Title</f:facet>
-                            #{product.title}
+                            #{category.title}
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">Description</f:facet>
-                            #{product.description}
-                        </h:column>
-
-                        <h:column>
-                            <f:facet name="header">Price</f:facet>
-                            #{product.price}
+                            #{category.description}
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">Actions</f:facet>
 
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{productController.editProduct(product)}"/>
+                                             action="#{categoryController.edit(category)}"/>
 
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{productController.deleteProduct(product)}">
-                                <f:ajax event="click" render="productForm"/>
+                                             action="#{categoryController.delete(category)}">
+                                <f:ajax event="click" render="categoryForm"/>
                             </h:commandButton>
                         </h:column>
 

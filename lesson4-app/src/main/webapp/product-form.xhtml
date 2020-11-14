@@ -19,16 +19,28 @@
                     <input type="hidden" id="id" name="id"/>
                     <div class="form-group">
                         <h:outputLabel value="Category id"/>
+                        <!--  Пример валидации управляемого бина.  -->
+                        <!--  //TODO валидация работает, но сообщение не выводится   -->
                         <h:inputText styleClass="form-control" id="categoryId"
                                      value="#{productController.product.categoryId}"
-                                     placeholder="Enter categoryId"/>
+                                     placeholder="Enter categoryId" validatorMessage="Строка не должна быть пустой">
+                            <f:validateRequired/>
+                            <h:message for="title" style= "color: red" />
+                        </h:inputText>
+
+
                     </div>
 
                     <div class="form-group">
                         <h:outputLabel value="Title"/>
+                        <!--  Пример валидации управляемого бина.  -->
+                        <!--  //TODO валидация работает, но сообщение не выводится   -->
                         <h:inputText styleClass="form-control" id="title"
                                      value="#{productController.product.title}"
-                                     placeholder="Enter title"/>
+                                     placeholder="Enter title"
+                                     validatorMessage="Поле должно содержать от 4 до 50 символов">
+                            <f:validateLength minimum="4" maximum="50" />
+                        </h:inputText>
                     </div>
 
                     <div class="form-group">
