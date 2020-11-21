@@ -17,6 +17,11 @@ public class NavigationController implements Serializable {
         return "/index.xhtml?faces-redirect=true";
     }
 
+    public String categoriesPage() {
+        log.info("******** categoriesPage *******");
+        return "/categories.xhtml?faces-redirect=true";
+    }
+
     public String cartPage() {
         log.info("******** cartPage *******");
         return "/cart.xhtml?faces-redirect=true";
