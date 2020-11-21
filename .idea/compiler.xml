@@ -9,6 +9,7 @@
         <module name="lesson1-app" />
         <module name="lesson4-app" />
         <module name="lesson2-app" />
+        <module name="lesson5-app" />
         <module name="lesson3-app" />
       </profile>
     </annotationProcessing>
