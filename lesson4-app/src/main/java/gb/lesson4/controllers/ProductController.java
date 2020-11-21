@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -22,13 +23,22 @@ public class ProductController implements Serializable {
 
     private Product product;
 
-    //TODO Почему-то при отображении списка товаров в index.xhtml этот метод вызывается 3 раза вместо одного!!!
-    public List<Product> getAllProducts() throws SQLException {
-//        return productRepository.findAll();
-        List<Product> products = productRepository.findAll();
-        log.info("****** products: " + products);
+    private List<Product> products;
+
+    public void preloadData(ComponentSystemEvent componentSystemEvent) throws SQLException {
+        products = productRepository.findAll();
+    }
+
+    //TODO Solved. Почему-то при отображении списка товаров в index.xhtml этот метод вызывается 3 раза вместо одного!!!
+    public List<Product> getAllProducts() {
         return products;
     }
+//    public List<Product> getAllProducts() throws SQLException {
+////        return productRepository.findAll();
+//        List<Product> products = productRepository.findAll();
+//        log.info("****** products: " + products);
+//        return products;
+//    }
 
     public Product getProduct() {
         return product;

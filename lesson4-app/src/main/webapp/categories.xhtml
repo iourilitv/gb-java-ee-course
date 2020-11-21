@@ -8,6 +8,9 @@
     </ui:include>
 
 <h:body>
+    <!--  To fix the "Triple request to repository to get a List of entities" problem -->
+    <f:event listener="#{categoryController.preloadData}" type="preRenderView"/>
+
     <ui:include src="/WEB-INF/views/frags/navigation.xhtml">
         <ui:param name="Title" value="Categories list"/>
     </ui:include>

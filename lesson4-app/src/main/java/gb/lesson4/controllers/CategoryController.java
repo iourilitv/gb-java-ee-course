@@ -1,11 +1,13 @@
 package gb.lesson4.controllers;
 
 import gb.lesson4.entities.Category;
+import gb.lesson4.entities.Product;
 import gb.lesson4.repositories.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -22,9 +24,18 @@ public class CategoryController implements Serializable {
 
     private Category category;
 
-    public List<Category> getAll() throws SQLException {
-        return categoryRepository.findAll();
+    private List<Category> categories;
+
+    public void preloadData(ComponentSystemEvent componentSystemEvent) throws SQLException {
+        categories = categoryRepository.findAll();
     }
+
+    public List<Category> getAll() {
+        return categories;
+    }
+//    public List<Category> getAll() throws SQLException {
+//        return categoryRepository.findAll();
+//    }
 
     public Category getCategory() {
         return category;
