@@ -1,10 +1,21 @@
 package gb.lesson5.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import java.util.List;
+
 public class User {
     private Integer id;
     private String firstName;
     private String lastName;
     private String phone;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Order> orders;
 
     public User() {
     }
@@ -39,6 +50,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

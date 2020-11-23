@@ -1,25 +1,40 @@
 package gb.lesson5.entities;
 
 import javax.inject.Named;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * Пример валидации управляемого бина.
  */
 @Named
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    private Integer categoryId;
+
+    @ManyToOne
+    @Column(name = "category")
+    private Category category;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
     private BigDecimal price;
 
     public Product() {
     }
 
-    public Product(Integer id, Integer categoryId, String title, String description, BigDecimal price) {
+    public Product(Integer id, Category category, String title, String description, BigDecimal price) {
         this.id = id;
-        this.categoryId = categoryId;
+        this.category = category;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -33,12 +48,12 @@ public class Product {
         this.id = id;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getTitle() {
@@ -69,7 +84,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", categoryId=" + categoryId +
+                ", category=" + category +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

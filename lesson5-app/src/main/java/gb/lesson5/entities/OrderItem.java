@@ -1,21 +1,40 @@
 package gb.lesson5.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "order_items")
 public class OrderItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    private Integer orderId;
+
+    @ManyToOne
+    @Column(name = "order", nullable = false)
+    private Order order;
+
+    @OneToOne
+    @Column(name = "product", nullable = false)
     private Product product;
+
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
+
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
+
+    @Column(name = "cost", nullable = false)
     private BigDecimal cost;
 
     public OrderItem() {
     }
 
-    public OrderItem(Integer id, Integer orderId, Product product, Integer quantity, BigDecimal price, BigDecimal cost) {
+    public OrderItem(Integer id, Order order, Product product, Integer quantity, BigDecimal price, BigDecimal cost) {
         this.id = id;
-        this.orderId = orderId;
+        this.order = order;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -30,12 +49,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Product getProduct() {
@@ -74,6 +93,7 @@ public class OrderItem {
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
+                ", orderId=" + order.getId() +
                 ", product=" + product +
                 ", quantity=" + quantity +
                 ", price=" + price +

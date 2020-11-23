@@ -1,21 +1,38 @@
 package gb.lesson5.entities;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Пример валидации CDI бина.
  */
+@Entity
+@Table(name = "categories")
 public class Category {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @NotEmpty(message = "Поле не должно быть пустым")
     @Size (min = 4, max = 50,message = "Поле должно содержать от 4 до 50 символов")
+    @Column(name = "title", nullable = false)
     private String title;
 
     @NotNull(message = "Поле не должно быть пустым")
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @OneToMany(
+            mappedBy = "category",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Product> products;
 
     public Category() {
     }
@@ -53,6 +70,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

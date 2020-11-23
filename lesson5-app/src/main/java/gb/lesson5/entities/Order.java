@@ -1,24 +1,43 @@
 package gb.lesson5.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+@Entity
+@Table(name = "orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+
+    @ManyToOne
+    @Column(name = "user")
     private User user;
+
+    @Column(name = "delivery_addresses")
     private String deliveryAddress;
-    private List<OrderItem> items;
+
+    @Column(name = "total")
     private BigDecimal total;
+
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<OrderItem> items;
 
     public Order() {
     }
 
-    public Order(Integer id, User user, String deliveryAddress, List<OrderItem> items, BigDecimal total) {
+    public Order(Integer id, User user, String deliveryAddress, BigDecimal total, List<OrderItem> items) {
         this.id = id;
         this.user = user;
         this.deliveryAddress = deliveryAddress;
-        this.items = items;
         this.total = total;
+        this.items = items;
     }
 
     public Integer getId() {
@@ -45,14 +64,6 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public List<OrderItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
-    }
-
     public BigDecimal getTotal() {
         return total;
     }
@@ -61,14 +72,22 @@ public class Order {
         this.total = total;
     }
 
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", user=" + user +
                 ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", items=" + items +
                 ", total=" + total +
+                ", items=" + items +
                 '}';
     }
 }
