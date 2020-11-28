@@ -1,4 +1,4 @@
-package gb.lesson5.controllers;
+package gb.lesson6.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

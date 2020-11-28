@@ -1,4 +1,4 @@
-package gb.lesson5.entities;
+package gb.lesson6.entities;
 
 import javax.inject.Named;
 import javax.persistence.*;
@@ -17,7 +17,7 @@ public class Product {
     private Integer id;
 
     @ManyToOne
-    @Column(name = "category")
+    @JoinColumn(name = "category")
     private Category category;
 
     @Column(name = "title")

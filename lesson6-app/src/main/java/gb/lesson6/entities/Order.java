@@ -1,4 +1,4 @@
-package gb.lesson5.entities;
+package gb.lesson6.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ public class Order {
     private Integer id;
 
     @ManyToOne
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     private User user;
 
     @Column(name = "delivery_addresses")

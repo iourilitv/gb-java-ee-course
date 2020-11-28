@@ -1,23 +1,15 @@
-package gb.lesson5.repositories;
+package gb.lesson6.repositories;
 
-import gb.lesson5.entities.Category;
-import gb.lesson5.entities.Product;
+import gb.lesson6.entities.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.ServletContext;
-import java.math.BigDecimal;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Named
 @ApplicationScoped
@@ -47,7 +39,7 @@ public class ProductRepository {
     }
 
     public List<Product> findAll() {
-        return em.createQuery("select * from Product p", Product.class).getResultList();
+        return em.createQuery("select p from Product p", Product.class).getResultList();
     }
 
 }

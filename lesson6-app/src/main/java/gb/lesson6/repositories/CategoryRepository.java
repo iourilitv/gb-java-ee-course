@@ -1,6 +1,6 @@
-package gb.lesson5.repositories;
+package gb.lesson6.repositories;
 
-import gb.lesson5.entities.Category;
+import gb.lesson6.entities.Category;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;

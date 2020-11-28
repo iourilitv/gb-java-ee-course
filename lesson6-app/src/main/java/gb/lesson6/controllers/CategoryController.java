@@ -1,7 +1,7 @@
-package gb.lesson5.controllers;
+package gb.lesson6.controllers;
 
-import gb.lesson5.entities.Category;
-import gb.lesson5.repositories.CategoryRepository;
+import gb.lesson6.entities.Category;
+import gb.lesson6.repositories.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +10,6 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @Named
@@ -25,7 +24,7 @@ public class CategoryController implements Serializable {
 
     private List<Category> categories;
 
-    public void preloadData(ComponentSystemEvent componentSystemEvent) throws SQLException {
+    public void preloadData(ComponentSystemEvent componentSystemEvent) {
         categories = categoryRepository.findAll();
     }
 
@@ -51,7 +50,7 @@ public class CategoryController implements Serializable {
         return "/category-form.xhtml?faces-redirect=true";
     }
 
-    public String save() throws SQLException {
+    public String save() {
         if(category.getId() == null) {
             categoryRepository.insert(category);
         } else {
@@ -65,7 +64,7 @@ public class CategoryController implements Serializable {
         return "/category-form.xhtml?faces-redirect=true";
     }
 
-    public void delete(Category category) throws SQLException {
+    public void delete(Category category) {
         categoryRepository.delete(category.getId());
     }
 

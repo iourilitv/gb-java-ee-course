@@ -1,7 +1,7 @@
-package gb.lesson5.controllers;
+package gb.lesson6.controllers;
 
-import gb.lesson5.entities.Product;
-import gb.lesson5.repositories.ProductRepository;
+import gb.lesson6.entities.Product;
+import gb.lesson6.repositories.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +10,6 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @Named
@@ -25,7 +24,7 @@ public class ProductController implements Serializable {
 
     private List<Product> products;
 
-    public void preloadData(ComponentSystemEvent componentSystemEvent) throws SQLException {
+    public void preloadData(ComponentSystemEvent componentSystemEvent) {
         products = productRepository.findAll();
     }
 
@@ -51,7 +50,7 @@ public class ProductController implements Serializable {
         return "/product-form.xhtml?faces-redirect=true";
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct() {
         if(product.getId() == null) {
             productRepository.insert(product);
         } else {
@@ -65,7 +64,7 @@ public class ProductController implements Serializable {
         return "/product-form.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) throws SQLException {
+    public void deleteProduct(Product product) {
         productRepository.delete(product.getId());
     }
 

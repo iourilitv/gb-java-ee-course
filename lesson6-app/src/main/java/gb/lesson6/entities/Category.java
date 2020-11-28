@@ -1,4 +1,4 @@
-package gb.lesson5.entities;
+package gb.lesson6.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
