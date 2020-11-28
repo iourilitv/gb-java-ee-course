@@ -13,11 +13,11 @@ public class OrderItem {
     private Integer id;
 
     @ManyToOne
-    @Column(name = "order", nullable = false)
+    @JoinColumn(name = "order", nullable = false)
     private Order order;
 
     @OneToOne
-    @Column(name = "product", nullable = false)
+    @JoinColumn(name = "product", nullable = false)
     private Product product;
 
     @Column(name = "quantity", nullable = false)

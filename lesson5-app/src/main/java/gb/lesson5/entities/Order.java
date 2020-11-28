@@ -13,7 +13,7 @@ public class Order {
     private Integer id;
 
     @ManyToOne
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     private User user;
 
     @Column(name = "delivery_addresses")

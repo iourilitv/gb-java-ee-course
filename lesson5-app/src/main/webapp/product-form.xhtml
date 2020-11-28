@@ -22,7 +22,7 @@
                         <!--  Пример валидации управляемого бина.  -->
                         <!--  //TODO валидация работает, но сообщение не выводится   -->
                         <h:inputText styleClass="form-control" id="categoryId"
-                                     value="#{productController.product.categoryId}"
+                                     value="#{productController.product.category.id}"
                                      placeholder="Enter categoryId" validatorMessage="Строка не должна быть пустой">
                             <f:validateRequired/>
                             <h:message for="title" style= "color: red" />
