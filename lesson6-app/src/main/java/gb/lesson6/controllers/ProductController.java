@@ -1,9 +1,9 @@
 package gb.lesson6.controllers;
 
-import gb.lesson6.entities.Product;
-import gb.lesson6.repositories.ProductRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import gb.lesson6.entities.Category;
+import gb.lesson6.repositories.interfaces.ICategoryRepository;
+import gb.lesson6.reprentities.ProductRepr;
+import gb.lesson6.services.interfaces.IProductService;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
@@ -15,57 +15,66 @@ import java.util.List;
 @Named
 @SessionScoped
 public class ProductController implements Serializable {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Inject
-    private ProductRepository productRepository;
+    private IProductService productService;
 
-    private Product product;
+    @Inject
+    private ICategoryRepository categoryRepository;
 
-    private List<Product> products;
+    private ProductRepr product;
+
+    private List<ProductRepr> products;
+
+    private List<Category> categories;
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        products = productRepository.findAll();
+        products = productService.findAllProductRepr();
+        categories = categoryRepository.findAll();
     }
 
-    public List<Product> getAllProducts() {
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public List<ProductRepr> getAllProducts() {
         return products;
     }
 
-    public Product getProduct() {
+    public ProductRepr getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(ProductRepr productRepr) {
+        product = productRepr;
     }
 
-    public String productDetails(Product product) {
-        this.product = product;
+    public String productDetails(ProductRepr productRepr) {
+        product = productRepr;
         return "/product-details.xhtml?faces-redirect=true";
     }
 
     public String createProduct() {
-        this.product = new Product();
+        product = new ProductRepr();
         return "/product-form.xhtml?faces-redirect=true";
     }
 
     public String saveProduct() {
         if(product.getId() == null) {
-            productRepository.insert(product);
+            productService.insert(product);
         } else {
-            productRepository.update(product);
+            productService.update(product);
         }
         return "/index.xhtml?faces-redirect=true";
     }
 
-    public String editProduct(Product product) {
-        this.product = product;
+    public String editProduct(ProductRepr productRepr) {
+        product = productRepr;
         return "/product-form.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) {
-        productRepository.delete(product.getId());
+    public void deleteProduct(ProductRepr productRepr) {
+        productService.delete(productRepr.getId());
     }
 
 }

@@ -1,13 +1,8 @@
 package gb.lesson6.entities;
 
-import javax.inject.Named;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-/**
- * Пример валидации управляемого бина.
- */
-@Named
 @Entity
 @Table(name = "products")
 public class Product {
@@ -32,8 +27,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, Category category, String title, String description, BigDecimal price) {
-        this.id = id;
+    public Product(Category category, String title, String description, BigDecimal price) {
         this.category = category;
         this.title = title;
         this.description = description;
