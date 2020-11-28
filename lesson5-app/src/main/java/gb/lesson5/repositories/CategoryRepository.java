@@ -39,7 +39,7 @@ public class CategoryRepository {
     }
 
     public List<Category> findAll() {
-        return em.createQuery("select * from Category c", Category.class).getResultList();
+        return em.createQuery("select c from Category c", Category.class).getResultList();
     }
 
 }
