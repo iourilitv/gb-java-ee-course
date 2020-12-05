@@ -11,7 +11,7 @@ import java.util.List;
 @Stateful
 public class CartService implements Serializable {
 
-    private List<OrderItemRepr> items;
+    private final List<OrderItemRepr> items;
 
     private BigDecimal total;
 

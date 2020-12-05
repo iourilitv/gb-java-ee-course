@@ -35,14 +35,13 @@ public class CartController implements Serializable {
         return total;
     }
 
-    public String addItem(OrderItemRepr itemRepr) {
+    public void addItem(OrderItemRepr itemRepr) {
         cartService.addItem(itemRepr);
-        return "/cart.xhtml?faces-redirect=true";
     }
 
-    public String deleteItem(OrderItemRepr itemRepr) {
+    public void deleteItem(OrderItemRepr itemRepr) {
         cartService.deleteItem(itemRepr);
-        return "/cart.xhtml?faces-redirect=true";
     }
+
 
 }

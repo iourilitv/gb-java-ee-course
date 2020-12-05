@@ -50,13 +50,12 @@ public class CategoryController implements Serializable {
         return "/category-form.xhtml?faces-redirect=true";
     }
 
-    public String save() {
+    public void save() {
         if(category.getId() == null) {
             categoryRepository.insert(category);
         } else {
             categoryRepository.update(category);
         }
-        return "/categories.xhtml?faces-redirect=true";
     }
 
     public String edit(Category category) {
