@@ -17,6 +17,7 @@
         <module>lesson4-app</module>
         <module>lesson5-app</module>
         <module>lesson6-app</module>
+        <module>lesson7-app</module>
     </modules>
 
 </project>
