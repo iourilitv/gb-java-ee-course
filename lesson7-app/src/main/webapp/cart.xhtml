@@ -1,0 +1,77 @@
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:include src="/WEB-INF/views/frags/head.xhtml">
+    <ui:param name="Title" value="Cart"/>
+</ui:include>
+
+<h:body>
+    <f:event listener="#{cartController.preloadData}" type="preRenderView"/>
+
+    <ui:include src="/WEB-INF/views/frags/navigation.xhtml">
+        <ui:param name="pageName" value="Cart"/>
+    </ui:include>
+
+    <div class="container">
+        <div class="row py-2">
+            <h:form id="cartForm">
+                <div class="col-12">
+                    <h:dataTable value="#{cartController.items}" var="orderItemRepr"
+                                 styleClass="table table-bordered my-2">
+                        <h:column>
+                            <f:facet name="header">Id</f:facet>
+                            #{orderItemRepr.id}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">OrderId</f:facet>
+                            #{orderItemRepr.orderId}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">ProductTitle</f:facet>
+                            #{orderItemRepr.productTitle}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Quantity</f:facet>
+                            #{orderItemRepr.quantity}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Price</f:facet>
+                            #{orderItemRepr.price}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Cost</f:facet>
+                            #{orderItemRepr.cost}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Actions</f:facet>
+
+                            <h:commandButton value="Add" styleClass="btn btn-success"
+                                             action="#{cartController.addItem(orderItemRepr)}">
+                                <f:ajax event="click" render="cartForm"/>
+                            </h:commandButton>
+
+                            <h:commandButton value="Delete" styleClass="btn btn-danger"
+                                             action="#{cartController.deleteItem(orderItemRepr)}">
+                                <f:ajax event="click" render="cartForm"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+
+                    <h:outputLabel value="#{cartController.total}"/>
+
+                </div>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+
+</html>
