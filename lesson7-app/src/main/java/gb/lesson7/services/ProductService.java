@@ -6,21 +6,31 @@ import gb.lesson7.repositories.interfaces.ICategoryRepository;
 import gb.lesson7.repositories.interfaces.IProductRepository;
 import gb.lesson7.reprentities.ProductRepr;
 import gb.lesson7.services.interfaces.IProductService;
+import gb.lesson7.services.interfaces.IProductServiceWs;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
+import javax.jws.WebService;
+import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 
 @Stateless
-public class ProductService implements IProductService {
+@WebService(endpointInterface = "gb.lesson7.services.interfaces.IProductServiceWs", serviceName = "ProductService")
+public class ProductService implements IProductService, IProductServiceWs {
 
     @Inject
     private IProductRepository productRepository;
 
     @Inject
     private ICategoryRepository categoryRepository;
+
+    public ProductService() {
+    }
+
+    public ProductService(URL url) {
+        System.out.println("URL: " + url);
+    }
 
     @TransactionAttribute
     @Override
@@ -47,8 +57,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Optional<Product> findById(Integer id) {
-        return productRepository.findById(id);
+    public ProductRepr findProductReprById(Integer id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
+        return new ProductRepr(product.getId(), product.getCategory(), product.getTitle(),
+                product.getDescription(), product.getPrice());
     }
 
     @Override
@@ -59,6 +71,11 @@ public class ProductService implements IProductService {
     @Override
     public List<ProductRepr> findAllProductRepr() {
         return productRepository.findAllProductRepr();
+    }
+
+    @Override
+    public IProductServiceWs getProductServicePort() {
+        return null;
     }
 
 }

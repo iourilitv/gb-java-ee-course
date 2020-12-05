@@ -1,6 +1,7 @@
 package gb.lesson7.reprentities;
 
 import gb.lesson7.entities.Category;
+import gb.lesson7.entities.Product;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

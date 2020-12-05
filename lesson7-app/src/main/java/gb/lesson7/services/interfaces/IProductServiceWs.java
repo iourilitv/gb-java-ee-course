@@ -1,28 +1,28 @@
 package gb.lesson7.services.interfaces;
 
-import gb.lesson7.entities.Product;
 import gb.lesson7.reprentities.ProductRepr;
 
-import javax.ejb.Local;
-import java.io.Serializable;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.Optional;
 
-@Local
-public interface IProductService extends Serializable {
+@WebService
+public interface IProductServiceWs {
 
+    @WebMethod
     void insert(ProductRepr productRepr);
 
+    @WebMethod
     void update(ProductRepr productRepr);
 
+    @WebMethod
     void delete(Integer id);
 
-//    Optional<Product> findById(Integer id);
+    @WebMethod
+    ProductRepr findProductReprById(Integer id);
 
-    List<Product> findAll();
-
+    @WebMethod
     List<ProductRepr> findAllProductRepr();
-
-    IProductServiceWs getProductServicePort();
 
 }
