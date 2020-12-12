@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
 @Named
@@ -37,4 +39,13 @@ public class NavigationController implements Serializable {
         return "/about.xhtml?faces-redirect=true";
     }
 
+    public String usersPage() {
+        log.info("******** usersPage *******");
+        return "/admin/users.xhtml?faces-redirect=true";
+    }
+
+    public String logout() {
+        ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
+        return "/index.xhtml?faces-redirect=true";
+    }
 }
