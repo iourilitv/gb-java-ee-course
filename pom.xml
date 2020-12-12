@@ -19,6 +19,7 @@
         <module>lesson6-app</module>
         <module>lesson7-app</module>
         <module>lesson7-ws-client</module>
+        <module>lesson8-app</module>
     </modules>
 
 </project>

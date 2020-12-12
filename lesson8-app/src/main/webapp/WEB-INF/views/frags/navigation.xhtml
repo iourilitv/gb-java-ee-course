@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<!--@elvariable id="pageName" type="java.lang.String"-->
+<h:form styleClass="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item #{pageName == 'Catalog' ? 'active' : ''}">
+                <h:commandLink styleClass="navbar-brand" value="Catalog" action="#{navigationController.catalogPage()}"/>
+            </li>
+
+            <li class="nav-item #{pageName == 'Categories' ? 'active' : ''}">
+                <h:commandLink styleClass="navbar-brand" value="Categories" action="#{navigationController.categoriesPage()}"/>
+            </li>
+
+            <li class="nav-item #{pageName == 'Cart' ? 'active' : ''}">
+                <h:commandLink styleClass="navbar-brand" value="Cart" action="#{navigationController.cartPage()}"/>
+            </li>
+
+            <li class="nav-item #{pageName == 'Order' ? 'active' : ''}">
+                <h:commandLink styleClass="navbar-brand" value="Order" action="#{navigationController.orderPage()}"/>
+            </li>
+
+            <li class="nav-item #{pageName == 'About' ? 'active' : ''}">
+                <h:commandLink styleClass="navbar-brand" value="About" action="#{navigationController.aboutPage()}"/>
+            </li>
+        </ul>
+    </div>
+</h:form>
+
+</html>
