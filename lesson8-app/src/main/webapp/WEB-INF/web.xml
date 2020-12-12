@@ -60,5 +60,23 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 <!--    <param-value>mysql!1qwertY</param-value>-->
 <!--  </context-param>-->
 
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>RealmUsersRoles</realm-name>
+    <form-login-config>
+      <form-login-page>/login.xhtml</form-login-page>
+      <form-error-page>/index.xhtml</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin pages</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>ADMIN</role-name>
+    </auth-constraint>
+  </security-constraint>
 </web-app>
 
